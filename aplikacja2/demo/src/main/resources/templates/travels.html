@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Aplikacja do planowania wyjazdów</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<span th:insert="~{menu :: menu}"></span>
+<div class="container pt-3 pb-4">
+  <div class="row">
+    <h1 th:text="'Lista wszystkich podróży'" class="py-3"></h1>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col" th:text="'#'"></th>
+        <th scope="col" th:text="'Nazwa wyjazdu'"></th>
+        <th scope="col" th:text="'Data wyjazdu'"></th>
+        <th scope="col" th:text="'Data powrotu'"></th>
+        <th scope="col" th:text="'Zadania podczas podróży'"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="travel : ${travels}">
+        <th scope="row" th:text="${travel.id}"></th>
+        <td th:text="${travel.name}"></td>
+        <td th:text="${travel.departureDate}"></td>
+        <td th:text="${travel.returnDate}"></td>
+        <td th:text="${travel.travelTasks}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>
